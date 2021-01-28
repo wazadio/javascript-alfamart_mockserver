@@ -24,7 +24,7 @@ server.get('/request', (req, res) => {
   
 
   if (parameter.toString() != Object.keys(req_param).toString()) {
-    req.status(400).send("0001:Invalid Transaction")
+    res.status(400).send("0001:Invalid Transaction")
   }
   else if (req_param.pwd != invalid_password){
   	res.status(400).send("0004:Invalid PIN")
