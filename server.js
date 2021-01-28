@@ -11,7 +11,8 @@ const amount_limit = 200000
 const min_amount_limit = 10000
 var respon
 const transaction_type = ["111", "112", "114"]
-const parameter = ['login', 'pwd', 'tx_date', 'tx_type', 'terminal', 'cust_key', 'tx_amt', 'tx_id', 'name', 'rek_type']
+var parameter = ['login', 'pwd', 'tx_date', 'tx_type', 'terminal', 'cust_key', 'tx_amt', 'tx_id', 'name', 'rek_type']
+parameter = parameter.sort()
 const blacklisted = "123456789"
 
 
@@ -23,7 +24,7 @@ server.get('/request', (req, res) => {
   req_param = req.query
   
 
-  if (parameter.toString() != Object.keys(req_param).toString()) {
+  if (parameter.toString() != Object.keys(req_param).sort().toString()) {
     res.status(400).send("0001:Invalid Transaction")
   }
   else if (req_param.pwd != invalid_password){
