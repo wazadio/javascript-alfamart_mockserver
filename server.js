@@ -46,7 +46,7 @@ server.get('/request', (req, res) => {
   }
   else if (isNaN(Number(req_param.tx_amt)) != true) {
     if (req_param.tx_type == "111") {
-       if ((current_amount + req_param.tx_amt) > amount_limit) {
+       if ((current_amount + parseInt(req_param.tx_amt)) > amount_limit) {
         res.status(400).send("0016:Reached Amount Limit")
        }
        else {
