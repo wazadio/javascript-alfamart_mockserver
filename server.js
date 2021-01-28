@@ -55,7 +55,7 @@ server.get('/request', (req, res) => {
        }
     }
     else if (req_param.tx_type == "114") {
-      if ((current_amount - tx_amt) < min_amount_limit) {
+      if ((current_amount - parseInt(req_param.tx_amt)) < min_amount_limit) {
         res.status(400).send("0014:Exceed Withdrawal Limit")
       }
       else {
@@ -64,7 +64,7 @@ server.get('/request', (req, res) => {
       }
     }
     else if (req_param.tx_type == "112") {
-      if ((current_amount - tx_amt) < min_amount_limit) {
+      if ((current_amount - parseInt(req_param.tx_amt)) < min_amount_limit) {
         res.status(400).send("0015:Exceed # Limit")
       }
       else {
