@@ -1,0 +1,29 @@
+{
+  "name": "alfamart",
+  "version": "1.0.0",
+  "description": "Server tiruan dari alfamart",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wazadio/javascript-alfamart_mockserver.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wazadio/javascript-alfamart_mockserver/issues"
+  },
+  "homepage": "https://github.com/wazadio/javascript-alfamart_mockserver#readme",
+  "engines": {
+    "node": "14.x"
+  },
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.15.2",
+    "json-server": "0.16.3"
+  }
+}
