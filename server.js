@@ -1,6 +1,7 @@
 const jsonServer = require('json-server')
 const server = jsonServer.create()
 const middlewares = jsonServer.defaults()
+const port = process.env.PORT || 3000
 
 const invalid_password = "mock_server"
 const expired_password = "123"
