@@ -21,30 +21,34 @@ server.use(middlewares)
 
 // Add custom routes before JSON Server router
 server.get('/request', (req, res) => {
-  req_param = req.query
-  
-
-  if (parameter.toString() != Object.keys(req_param).sort().toString()) {
-    res.status(400).send("0001:Invalid Transaction")
+  var req_param={}
+  for (var i in req.query){
+	req_param[i.toLowerCase()] = req.query[i]
   }
+  
+  if (parameter.toString() != Object.keys(req_param).sort().toString()) {
+  	res.status(400).send("0001:Invalid Transaction")
+  }
+ else if (req_param.pwd == expired_password){
+    res.status(400).send("00Q1:PIN Expired")
+  }
+
   else if (req_param.pwd != invalid_password){
   	res.status(400).send("0004:Invalid PIN")
   }
-  else if (req_param.pwd == expired_password){
-    res.status(400).send("00Q1:PIN Expired")
-  }
-  else if (transaction_type.includes(req_param.tx_type) == false) {
+   else if (transaction_type.includes(req_param.tx_type) == false) {
     res.status(400).send("0005:Invalid Transaction Type")
   }
   else if (isNaN(Number(req_param.tx_amt))) {
     res.status(400).send("0006:Invalid Amount Field")
   }
-  else if (req_param.cust_key != mobile_number) {
-    res.status(400).send("00LH:Invalid Phone Number")
-  }
   else if (req_param.cust_key == blacklisted) {
     res.status(400).send("00T7:Customer Blacklisted")
   }
+  else if (req_param.cust_key != mobile_number) {
+    res.status(400).send("00LH:Invalid Phone Number")
+  }
+
   else if (isNaN(Number(req_param.tx_amt)) != true) {
     if (req_param.tx_type == "111") {
        if ((current_amount + parseInt(req_param.tx_amt)) > amount_limit) {
